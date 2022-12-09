@@ -1,0 +1,40 @@
+# Environments
+.vera-venv
+.env
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# Pyenv
+.python-version
+
+# Apple Desktop Services Store
+.DS_Store
+.DS_Store?
+
+# Datasets
+Datasets/
+
+# Python Cache Files
+backend/__pycache__/
+__pycache__/
+
+# Visual Studio Code
+.vscode/*
+.vscode/
+!.vscode/settings.json
+
+# Streamlit
+.streamlit/
+
+# S3 Temporary Files
+model.h5
+X.parquet
+X_train.parquet
+X_valid.parquet
+X_test.parquet
+y.parquet
+recording_name
+audio_file
+rootkey.csv
