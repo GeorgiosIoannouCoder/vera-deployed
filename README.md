@@ -59,7 +59,7 @@ An audio classification project which takes audio files recorded from human spee
 
 ## NOTEBOOK VIEWER LINK
 
-You can check the Jupyter Notebook for all the workings of the model [here](https://nbviewer.org/github/GeorgiosIoannouCoder/vera-deployed/blob/main/backend/vera-notebook.ipynb).
+You can check the Jupyter Notebook for all the workings of the model [here](https://nbviewer.org/github/GeorgiosIoannouCoder/vera-deployed/blob/main/vera-notebook.ipynb).
 
 ## SPECIAL MENTIONS
 
