@@ -1,4 +1,4 @@
-***NOTE: The undeployed version of this project and how to set it up on your local machine can be found [here](https://github.com/GeorgiosIoannouCoder/vera).***
+***NOTE: The undeployed version of this project and how to set it up and run it on your local machine can be found [here](https://github.com/GeorgiosIoannouCoder/vera).***
 
 <div>
     <h1  align="center" >Voice Emotion Recognition of Audio 🔊</h1>
