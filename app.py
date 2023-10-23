@@ -953,8 +953,8 @@ def classify_btn():
             st.session_state["recordings_path"] + st.session_state["dt_string"] + ".wav"
         )
     except Exception as e:
-        print(e)
-        st.info("Please record sound first.", icon="ℹ️")
+        st.info(e, icon="ℹ️")
+        # st.info("Please record sound first.", icon="ℹ️")
 
 
 # User Interface.
