@@ -285,10 +285,10 @@ def increase_array_size(audio_features):
 def predict(audio_features):
     if "model_path" not in st.session_state:
         st.session_state["model_path"] = st.secrets["model_path"]
-    print("test10")
+
     if "standard_scaler_path" not in st.session_state:
         st.session_state["standard_scaler_path"] = st.secrets["standard_scaler_path"]
-    print("test9")
+
     # if "X_train_path" not in st.session_state:
     #     st.session_state["X_train_path"] = st.secrets["X_train_path"]
 
@@ -348,21 +348,13 @@ def predict(audio_features):
     # gc.collect()
 
     if "standard_scaler" not in st.session_state:
-        print("test11")
-
         st.session_state["client"].download_file(
             st.session_state["bucket_name"],
             st.session_state["standard_scaler_path"],
             "standard_scaler.save",
         )
 
-        print("test12")
-
         st.session_state["standard_scaler"] = joblib.load("standard_scaler.save")
-
-        print("test13")
-
-    print("test14")
 
     # st.session_state["standard_scaler"].fit_transform(
     #     st.session_state["X_train"].values
@@ -809,13 +801,12 @@ def classify_btn():
             recording_name,
             "recording_name",
         )
-        print("test1")
+
         audio_features = get_features("recording_name")
-        print("test2")
+
         audio_features = increase_array_size(audio_features)
-        print("test3")
+
         predict(audio_features)
-        print("test4")
 
         del audio_features
         gc.collect()
@@ -838,10 +829,7 @@ def classify_btn():
         if st.session_state["emotion"] == "surprise":
             st.session_state["emotion"] = "surprised"
 
-        print("test5")
-
         if st.session_state["emotion"] != "":
-            print("test6")
             if st.session_state["pred_emotion"] in st.session_state["emotion"]:
                 st.session_state["particle"] = "😆"
                 styling(particle=st.session_state["particle"])
@@ -890,8 +878,7 @@ def classify_btn():
                     gc.collect()
 
                     st.balloons()
-                except Exception as e:
-                    print(e)
+                except:
                     st.error(
                         "Something went wrong when loading the audio. Please try again."
                     )
@@ -940,13 +927,11 @@ def classify_btn():
                     del st.session_state["audio_bytes"]
                     del bytes
                     gc.collect()
-                except Exception as e:
-                    print(e)
+                except:
                     st.error(
                         "Something went wrong when loading the audio. Please try again."
                     )
         else:
-            print("test7")
             st.markdown(
                 f"""
                 <p align="center" style="font-family: monospace; color: #FAF9F6; font-size: 2.5rem;"> Please generate a prompt and an emotion.</p>
@@ -956,9 +941,8 @@ def classify_btn():
         st.session_state["recording_name"] = (
             st.session_state["recordings_path"] + st.session_state["dt_string"] + ".wav"
         )
-    except Exception as e:
-        st.info(e, icon="ℹ️")
-        # st.info("Please record sound first.", icon="ℹ️")
+    except:
+        st.info("Please record sound first.", icon="ℹ️")
 
 
 # User Interface.
