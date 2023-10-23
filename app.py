@@ -798,9 +798,13 @@ def classify_btn():
             recording_name,
             "recording_name",
         )
+        print("test1")
         audio_features = get_features("recording_name")
+        print("test2")
         audio_features = increase_array_size(audio_features)
+        print("test3")
         predict(audio_features)
+        print("test4")
 
         del audio_features
         gc.collect()
@@ -823,7 +827,10 @@ def classify_btn():
         if st.session_state["emotion"] == "surprise":
             st.session_state["emotion"] = "surprised"
 
+        print("test5")
+
         if st.session_state["emotion"] != "":
+            print("test6")
             if st.session_state["pred_emotion"] in st.session_state["emotion"]:
                 st.session_state["particle"] = "😆"
                 styling(particle=st.session_state["particle"])
@@ -928,6 +935,7 @@ def classify_btn():
                         "Something went wrong when loading the audio. Please try again."
                     )
         else:
+            print("test7")
             st.markdown(
                 f"""
                 <p align="center" style="font-family: monospace; color: #FAF9F6; font-size: 2.5rem;"> Please generate a prompt and an emotion.</p>
