@@ -1,15 +1,15 @@
 .stApp.css-fg4pbf.eczokvf1 {
   margin: 0;
   padding: 0;
-  background-color: #ff0000;
+  background-color: #1c1f25;
+  background: #1c1f25;
   overflow-x: hidden;
   overflow-y: hidden;
 }
 
-body {
-  background-color: #ff0000;
+.st-emotion-cache-fg4pbf {
+  background: #1c1f25;
 }
-
 /*waves****************************/
 
 .box {
