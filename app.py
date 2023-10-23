@@ -2,7 +2,6 @@ import boto3  # AWS SDK to manage AWS services.
 import gc  # Garbage collector.
 import librosa  # Audio analysis.
 import numpy as np  # Data wrangling.
-import pandas as pd  # Data handling.
 import pydub  # Manipulate audio.
 import queue  # Queue data structure.
 import random  # Random variable generators.
