@@ -286,12 +286,8 @@ def predict(audio_features):
     if "model_path" not in st.session_state:
         st.session_state["model_path"] = st.secrets["model_path"]
 
-    print("test10")
-
     if "standard_scaler_path" not in st.session_state:
         st.session_state["standard_scaler_path"] = st.secrets["standard_scaler_path"]
-
-    print("test11")
 
     # if "X_train_path" not in st.session_state:
     #     st.session_state["X_train_path"] = st.secrets["X_train_path"]
@@ -351,16 +347,24 @@ def predict(audio_features):
     # del X_test
     # gc.collect()
 
+    print("test10")
+
     if "standard_scaler" not in st.session_state:
+        print("test11")
+
         st.session_state["client"].download_file(
             st.session_state["bucket_name"],
             st.session_state["standard_scaler_path"],
             "standard_scaler.save",
         )
 
+        print("test12")
+
         st.session_state["standard_scaler"] = joblib.load("standard_scaler.save")
 
-    print("test12")
+        print("test13")
+
+    print("test14")
 
     # st.session_state["standard_scaler"].fit_transform(
     #     st.session_state["X_train"].values
