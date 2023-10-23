@@ -285,6 +285,9 @@ def increase_array_size(audio_features):
 def predict(audio_features):
     if "model_path" not in st.session_state:
         st.session_state["model_path"] = st.secrets["model_path"]
+    
+    if "standard_scaler_path" not in st.session_state:
+        st.session_state["standard_scaler_path"] = st.secrets["standard_scaler_path"]
 
     # if "X_train_path" not in st.session_state:
     #     st.session_state["X_train_path"] = st.secrets["X_train_path"]
