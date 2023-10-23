@@ -835,8 +835,6 @@ def classify_btn():
                 styling(particle=st.session_state["particle"])
                 st.markdown(
                     f"""
-                    <p align="center" style="font-family: monospace; color: #FAF9F6; font-size: 1rem;">
-                    Please refresh the webpage before attempting to record/classify a new audio.🔄</p>
                     <p align="center" style="font-family: monospace; color: #FAF9F6; font-size: 2.5rem;">
                     You tried to sound {st.session_state["emotion"].upper()} and you sounded {st.session_state["pred_emotion"].upper()}</p>
                     <p align="center" style="font-family: monospace; color: #FAF9F6; font-size: 2.5rem;">Well done!👍</p>
