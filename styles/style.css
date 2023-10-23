@@ -6,6 +6,10 @@
   overflow-y: hidden;
 }
 
+body {
+  background-color: #ff0000;
+}
+
 /*waves****************************/
 
 .box {
