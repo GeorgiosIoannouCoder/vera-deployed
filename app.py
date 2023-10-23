@@ -1,5 +1,6 @@
 import boto3  # AWS SDK to manage AWS services.
 import gc  # Garbage collector.
+import joblib  # Load StandardScaler.
 import librosa  # Audio analysis.
 import numpy as np  # Data wrangling.
 import pydub  # Manipulate audio.
@@ -42,6 +43,9 @@ if "recordings_path" not in st.session_state:
 
 if "model_path" not in st.session_state:
     st.session_state["model_path"] = st.secrets["model_path"]
+
+if "standard_scaler_path" not in st.session_state:
+    st.session_state["standard_scaler_path"] = st.secrets["standard_scaler_path"]
 
 # if "X_train_path" not in st.session_state:
 #     st.session_state["X_train_path"] = st.secrets["X_train_path"]
@@ -340,8 +344,15 @@ def predict(audio_features):
     # del X_test
     # gc.collect()
 
-    st.session_state["standard_scaler"] = StandardScaler()
-    # TODO: Load scaler object.
+    if "standard_scaler" not in st.session_state:
+        st.session_state["client"].download_file(
+            st.session_state["bucket_name"],
+            st.session_state["standard_scaler_path"],
+            "standard_scaler.save",
+        )
+
+        st.session_state["standard_scaler"] = joblib.load("standard_scaler.save")
+
     # st.session_state["standard_scaler"].fit_transform(
     #     st.session_state["X_train"].values
     # )
@@ -351,7 +362,7 @@ def predict(audio_features):
     # st.session_state["standard_scaler"].transform(st.session_state["X_test"].values)
     # del st.session_state["X_test"]
 
-    audio_features = st.session_state["standard_scaler"].fit_transform(audio_features)
+    audio_features = st.session_state["standard_scaler"].transform(audio_features)
     audio_features = np.expand_dims(audio_features, axis=2)
 
     del st.session_state["standard_scaler"]
