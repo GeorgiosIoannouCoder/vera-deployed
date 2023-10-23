@@ -44,14 +44,14 @@ if "recordings_path" not in st.session_state:
 if "model_path" not in st.session_state:
     st.session_state["model_path"] = st.secrets["model_path"]
 
-if "X_train_path" not in st.session_state:
-    st.session_state["X_train_path"] = st.secrets["X_train_path"]
+# if "X_train_path" not in st.session_state:
+#     st.session_state["X_train_path"] = st.secrets["X_train_path"]
 
-if "X_valid_path" not in st.session_state:
-    st.session_state["X_valid_path"] = st.secrets["X_valid_path"]
+# if "X_valid_path" not in st.session_state:
+#     st.session_state["X_valid_path"] = st.secrets["X_valid_path"]
 
-if "X_test_path" not in st.session_state:
-    st.session_state["X_test_path"] = st.secrets["X_test_path"]
+# if "X_test_path" not in st.session_state:
+#     st.session_state["X_test_path"] = st.secrets["X_test_path"]
 
 if "RTC_CONFIGURATION" not in st.session_state:
     st.session_state["RTC_CONFIGURATION"] = RTCConfiguration(
@@ -283,75 +283,76 @@ def predict(audio_features):
     if "model_path" not in st.session_state:
         st.session_state["model_path"] = st.secrets["model_path"]
 
-    if "X_train_path" not in st.session_state:
-        st.session_state["X_train_path"] = st.secrets["X_train_path"]
+    # if "X_train_path" not in st.session_state:
+    #     st.session_state["X_train_path"] = st.secrets["X_train_path"]
 
-    if "X_valid_path" not in st.session_state:
-        st.session_state["X_valid_path"] = st.secrets["X_valid_path"]
+    # if "X_valid_path" not in st.session_state:
+    #     st.session_state["X_valid_path"] = st.secrets["X_valid_path"]
 
-    if "X_test_path" not in st.session_state:
-        st.session_state["X_test_path"] = st.secrets["X_test_path"]
+    # if "X_test_path" not in st.session_state:
+    #     st.session_state["X_test_path"] = st.secrets["X_test_path"]
 
-    if (
-        ("X_train" not in st.session_state)
-        or ("X_valid" not in st.session_state)
-        or ("X_test" not in st.session_state)
-    ):
-        if "X_train" in st.session_state:
-            del st.session_state["X_train"]
-        if "X_valid" in st.session_state:
-            del st.session_state["X_valid"]
-        if "X_test" in st.session_state:
-            del st.session_state["X_test"]
+    # if (
+    #     ("X_train" not in st.session_state)
+    #     or ("X_valid" not in st.session_state)
+    #     or ("X_test" not in st.session_state)
+    # ):
+    #     if "X_train" in st.session_state:
+    #         del st.session_state["X_train"]
+    #     if "X_valid" in st.session_state:
+    #         del st.session_state["X_valid"]
+    #     if "X_test" in st.session_state:
+    #         del st.session_state["X_test"]
 
-        gc.collect()
+    #     gc.collect()
 
-        if "is_download" not in st.session_state:
-            st.session_state["client"].download_file(
-                st.session_state["bucket_name"],
-                st.session_state["X_train_path"],
-                "X_train.parquet",
-            )
+    # if "is_download" not in st.session_state:
+    # st.session_state["client"].download_file(
+    #     st.session_state["bucket_name"],
+    #     st.session_state["X_train_path"],
+    #     "X_train.parquet",
+    # )
 
-            st.session_state["client"].download_file(
-                st.session_state["bucket_name"],
-                st.session_state["X_valid_path"],
-                "X_valid.parquet",
-            )
+    # st.session_state["client"].download_file(
+    #     st.session_state["bucket_name"],
+    #     st.session_state["X_valid_path"],
+    #     "X_valid.parquet",
+    # )
 
-            st.session_state["client"].download_file(
-                st.session_state["bucket_name"],
-                st.session_state["X_test_path"],
-                "X_test.parquet",
-            )
+    # st.session_state["client"].download_file(
+    #     st.session_state["bucket_name"],
+    #     st.session_state["X_test_path"],
+    #     "X_test.parquet",
+    # )
 
-            st.session_state["is_download"] = True
+    # st.session_state["is_download"] = True
 
-            # We have X which is data augmentation + data extraction.
-            X_train = pd.read_parquet("X_train.parquet")
-            st.session_state["X_train"] = X_train
-            del X_train
+    # We have X which is data augmentation + data extraction.
+    # X_train = pd.read_parquet("X_train.parquet")
+    # st.session_state["X_train"] = X_train
+    # del X_train
 
-            X_valid = pd.read_parquet("X_valid.parquet")
-            st.session_state["X_valid"] = X_valid
-            del X_valid
+    # X_valid = pd.read_parquet("X_valid.parquet")
+    # st.session_state["X_valid"] = X_valid
+    # del X_valid
 
-            X_test = pd.read_parquet("X_test.parquet")
-            st.session_state["X_test"] = X_test
-            del X_test
-            gc.collect()
+    # X_test = pd.read_parquet("X_test.parquet")
+    # st.session_state["X_test"] = X_test
+    # del X_test
+    # gc.collect()
 
     st.session_state["standard_scaler"] = StandardScaler()
-    st.session_state["standard_scaler"].fit_transform(
-        st.session_state["X_train"].values
-    )
-    del st.session_state["X_train"]
-    st.session_state["standard_scaler"].transform(st.session_state["X_valid"].values)
-    del st.session_state["X_valid"]
-    st.session_state["standard_scaler"].transform(st.session_state["X_test"].values)
-    del st.session_state["X_test"]
+    # TODO: Load scaler object.
+    # st.session_state["standard_scaler"].fit_transform(
+    #     st.session_state["X_train"].values
+    # )
+    # del st.session_state["X_train"]
+    # st.session_state["standard_scaler"].transform(st.session_state["X_valid"].values)
+    # del st.session_state["X_valid"]
+    # st.session_state["standard_scaler"].transform(st.session_state["X_test"].values)
+    # del st.session_state["X_test"]
 
-    audio_features = st.session_state["standard_scaler"].transform(audio_features)
+    audio_features = st.session_state["standard_scaler"].fit_transform(audio_features)
     audio_features = np.expand_dims(audio_features, axis=2)
 
     del st.session_state["standard_scaler"]
@@ -444,6 +445,7 @@ if "header" not in st.session_state:
         "header"
     ] = f"""<p align="center" style="font-family: monospace; color: #FAF9F6; font-size: 1.7rem;"> Click to generate a random prompt and emotion:</p>"""
 st.markdown(st.session_state["header"], unsafe_allow_html=True)
+
 
 # Emotion emoji animation.
 def styling(particle):
