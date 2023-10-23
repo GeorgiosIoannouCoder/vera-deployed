@@ -347,18 +347,12 @@ def predict(audio_features):
     # del X_test
     # gc.collect()
 
-    print("test10")
-
     if "standard_scaler" not in st.session_state:
-        print("test11")
-
         st.session_state["client"].download_file(
             st.session_state["bucket_name"],
             st.session_state["standard_scaler_path"],
             "standard_scaler.save",
         )
-
-        print("test12")
 
         st.session_state["standard_scaler"] = joblib.load("standard_scaler.save")
 
