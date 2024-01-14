@@ -1,4 +1,4 @@
-***NOTE: The undeployed version of this project, more readable code (all code needed to be compressed in a single app.py file due to deployment issues), and how to set it up and run it on your local machine can be found [here](https://github.com/GeorgiosIoannouCoder/vera).***
+***NOTE: The undeployed version of this project, a more readable code (all code in this repository needed to be compressed into a single app.py file due to deployment issues), and how to set it up and run it on your local machine can be found [here](https://github.com/GeorgiosIoannouCoder/vera).***
 
 <div>
     <h1  align="center" >Voice Emotion Recognition of Audio 🔊</h1>
@@ -14,7 +14,7 @@
    </a>
 </p>
 
-An audio classification project which takes audio files recorded from human speech, primarily in .wav format, and predicts the emotion conveyed from the voice.
+An audio classification project that takes audio files recorded from human speech, primarily in .wav format, and predicts the emotion conveyed from the voice.
 
 ## DATASETS USED
 
